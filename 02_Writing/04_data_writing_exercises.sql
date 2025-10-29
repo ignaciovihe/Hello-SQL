@@ -36,25 +36,47 @@
 
 6. Actualiza el nombre del estudio "Pixar Animation" a "Disney Studios".
 
+    UPDATE studios SET studio_name = 'Disney Studios' WHERE studio_name = 'Pixar Animation'
+
 7. Aumentar en 10% la taquilla de todas las películas con recaudación menor a 100 millones.
+
+    UPDATE movies SET total_revenue = total_revenue * 1.10 WHERE total_revenue < 100000000
 
 8. Actualiza la cantidad de espectadores de la película "Fight Club" a 30 millones.
 
+    UPDATE movies SET total_viewers = 30000000 WHERE title = 'Fight Club'
+
 9. Utilizando subqueries, asocia el estudio "Warner Bros" a las películas "Interstellar" y "The Dark Knight".
+
+    UPDATE movies SET studio_id = (SELECT studio_id FROM studios WHERE studio_name = 'Warner Bros') WHERE title in ('Interstellar', 'The Dark Knight')
 
 10. Utilizando subqueries, actualiza el director de la película "Avatar" a James Cameron.
 
+    UPDATE movies SET director_id = (SELECT people_id FROM people WHERE name = 'James Cameron') WHERE title = 'Avatar'
+
 11. Actualiza la fecha de nacimiento de Sam Worthington a 02/08/1976.
+
+    UPDATE people SET birth_date = '1976-08-02' WHERE name = 'Sam Worthington'
 
 12. Actualiza la cantidad de espectadores a 50000000 y la recaudación a 425368238.50 de la película "Django Unchained".
 
+    UPDATE movies SET total_viewers = 50000000, total_revenue = 425368238.50 WHERE title = 'Django Unchained'
+
 13. Elimina el estudio "Netflix Originals".
+
+    DELETE FROM studios WHERE studio_name = 'Netflix Originals'
 
 14. Elimina Argentina y Uruguay de la tabla de países.
 
+    DELETE FROM countries WHERE country_name IN ('Argentina', 'Uruguay')
+
 15. Elimina el director "Anthony Russo".
 
+    DELETE FROM people WHERE name = 'Anthony Russo'
+
 16. Elimina las películas estrenadas en 2017 que hayan tenido menos de 18500000 espectadores.
+
+    DELETE FROM movies WHERE release_year = 2017 AND total_viewers < 18500000
 
 */
 
